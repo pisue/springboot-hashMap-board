@@ -1,0 +1,15 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: utf-8
+      enabled: true
+
+spring:
+  datasource:
+#    mapper-locations: classpath:/mapper/*.xml
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3307/db_board?serverTimezone=Asia/Seoul
+    username: root
+    password: 1234
