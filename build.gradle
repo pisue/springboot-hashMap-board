@@ -1,7 +1,13 @@
 plugins {
-    id 'org.springframework.boot' version '2.6.7'
+    id 'org.springframework.boot' version '2.5.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 group = 'com.walle'
@@ -13,31 +19,34 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-
     implementation 'mysql:mysql-connector-java'
-
-    implementation "commons-io:commons-io:2.11.0"
-    implementation 'org.apache.commons:commons-compress:1.21'
 
     implementation('javax.servlet:jstl')
     implementation("org.apache.tomcat.embed:tomcat-embed-jasper")
 
     compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'com.h2database:h2'
-
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
     annotationProcessor 'org.projectlombok:lombok'
+    runtimeOnly 'com.h2database:h2'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     implementation group: 'org.apache.clerezza.ext', name: 'org.json.simple', version: '0.4'
 
+    implementation "commons-io:commons-io:2.11.0"
+    implementation 'org.apache.commons:commons-compress:1.21'
+
+    /*
+    implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
+    */
+
     implementation group: 'org.apache.poi', name: 'poi', version: '4.1.2'
     implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.2'
-
 }
 
 test {

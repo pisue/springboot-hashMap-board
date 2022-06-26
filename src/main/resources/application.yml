@@ -9,20 +9,38 @@ server:
 spring:
   mvc:
     view:
-      prefix: /WEB-INF/views/
+      prefix: /WEB-INF/
       suffix: .jsp
 
+#  h2:
+#    console:
+#      enabled: true
+
+#  datasource:
+#    url: jdbc:h2:tcp://localhost/~/test
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password:
+
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/practice?serverTimezone=Asia/Seoul
-    username: root
-    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/security?serverTimezone=Asia/Seoul
+    username: cos
+    password: cos1234
 
   jpa:
-    show_sql: true
-    open-in-view: true
+    #database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
       naming:
-        #변수 명과 DB칼럼명을 그대로 매핑
+        #JPA를 적용하고 나서 Entity 생성 시 변수 명을 그대로 매핑 안하고 카멜을 언더바 형식으로 자동 매핑해준다. (UserName = user_name)
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
+logging:
+  level:
+    me.silvernine: DEBUG
+
