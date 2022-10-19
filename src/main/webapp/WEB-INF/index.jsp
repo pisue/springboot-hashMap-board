@@ -7,5 +7,7 @@
 </head>
 <body>
     <h1>This is index page!</h1>
+    <a href="/logout">로그아웃</a>
+
 </body>
 </html>

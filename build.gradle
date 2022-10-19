@@ -19,32 +19,50 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    /* DB */
     implementation 'mysql:mysql-connector-java'
 
+    /* OAuth2.0 */
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+    /* JSTL, JSP*/
     implementation('javax.servlet:jstl')
     implementation("org.apache.tomcat.embed:tomcat-embed-jasper")
 
+    /* lombok */
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    /* h2 */
     runtimeOnly 'com.h2database:h2'
+
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    /* 테스트 환경 */
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    /* JSON */
     implementation group: 'org.apache.clerezza.ext', name: 'org.json.simple', version: '0.4'
 
+    /* 파일 I/O */
     implementation "commons-io:commons-io:2.11.0"
+
+    /* 압축 */
     implementation 'org.apache.commons:commons-compress:1.21'
 
+    /* jwt */
     /*
     implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
     */
 
+    /* 엑셀 */
     implementation group: 'org.apache.poi', name: 'poi', version: '4.1.2'
     implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.2'
 }

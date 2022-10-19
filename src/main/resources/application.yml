@@ -40,6 +40,59 @@ spring:
         format_sql: true
         show_sql: true
 
+  security:
+    oauth2:
+      client:
+        registration:
+
+          google:
+            client-id: 296142408405-06qop31umge6ula94443t5h97abdrp7o.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
+
+          facebook:
+            client-id: 752415152878236
+            client-secret: 9853cd006ab1924429c94ad4cd24a8c8
+            scope:
+              - email
+              - public_profile
+
+          #네이버나 카카오톡은 Provider가 아니다. 따라서 provider로 등록해줘야한다.
+          naver:
+            client-id: HNJGFWZ7eVhEaXUO1_mu
+            client-secret: VcUcXi_30Q
+            scope:
+              - name
+              - email
+            client-name: Naver
+            authorization-grant-type: authorization_code # API: Credentials 방식, Server: Code 방식
+            redirect-uri: http://localhost:8080/login/oauth2/code/naver # Provider는 고정 O, 네이버나 카카오톡은 고정 X
+
+          kakao:
+            client-id: cda17dd79b3abfade0acbd870be01923
+            redirect-uri: http://localhost:8080/login/oauth2/code/kakao
+            client-authentication-method: POST
+            authorization-grant-type: authorization_code
+            scope:
+              - profile_nickname
+              - account_email
+            client-name: Kakao
+
+        provider:
+          naver:
+            authorization-uri: https://nid.naver.com/oauth2.0/authorize # 이 주소로 요청(/oauth2/authorization/naver)하면 네이버 로그인 창이 띄워짐 (인증 요청)
+            token-uri: https://nid.naver.com/oauth2.0/token # 접근토근 발급, 갱신,삭제 요청(JSON)
+            user-info-uri: https://openapi.naver.com/v1/nid/me # 프로필 정보 조회(JSON)
+            user-name-attribute: response # 회원정보를 JSON으로 받는데 response라는 키값으로 네이버가 리턴해준다.(바꾸면 바뀐 이름으로 적용되는지 확인?)
+
+          kakao:
+            authorization_uri: https://kauth.kakao.com/oauth/authorize
+            token_uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user_name_attribute: id
+
 logging:
   level:
     me.silvernine: DEBUG

@@ -13,8 +13,9 @@ public class UserService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserRepository userRepository;
 
+    //간단하게
     public void save(User user) {
-        user.setRole("ROLE_USER"); //간단하게
+        user.setRole("ROLE_USER");
         String rawPassword = user.getPassword();
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
         user.setPassword(encPassword);
